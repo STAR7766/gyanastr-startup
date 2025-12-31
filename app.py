@@ -19,7 +19,7 @@ except:
 # --- FUNCTIONS ---
 def get_gemini_response(prompt, content):
     try:
-        model = genai.GenerativeModel('gemini-1.5-pro') # Flash is faster for demos
+        model = genai.GenerativeModel('gemini-pro') # Flash is faster for demos
         response = model.generate_content(prompt + "\n\nContent:\n" + content)
         return response.text
     except Exception as e:
@@ -69,4 +69,5 @@ if st.button("Generate Analysis") and 'content' in st.session_state:
     with st.spinner("AI Working..."):
         res = get_gemini_response(prompt, st.session_state['content'])
         st.markdown(res) # Direct output for safety
+
 
